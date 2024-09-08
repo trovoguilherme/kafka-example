@@ -1,0 +1,24 @@
+
+server:
+  port: 8090
+
+spring:
+  application:
+    name: kafka-consumer-async
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: skeleton-group-id
+      key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      value-deserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      auto-offset-reset: "earliest"
+      properties:
+        schema:
+          registry:
+            url: http://localhost:8081
+        specific:
+          avro:
+            reader: true
+
+topic:
+  name: skeleton-send-message

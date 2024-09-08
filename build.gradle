@@ -1,0 +1,68 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.3'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+ext {
+	set('springCloudVersion', "2023.0.3")
+}
+
+allprojects {
+	repositories {
+		mavenCentral()
+
+		maven {
+			url 'https://packages.confluent.io/maven/'
+		}
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	dependencies {
+		implementation 'org.apache.kafka:kafka-streams'
+		implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+		implementation 'org.springframework.cloud:spring-cloud-stream'
+		implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka-streams'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	}
+
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		}
+	}
+
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(17)
+		}
+	}
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+
+//	testLoggin {
+//		events "PASSED", "FAILED", "SKIPPED"
+//	}
+	}
+
+}
+
+bootJar.enabled = false
+
+

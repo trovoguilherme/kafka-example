@@ -1,0 +1,3 @@
+rootProject.name = 'kafka-producer-consumer-example'
+
+include 'skeleton-producer-api', 'skeleton-consumer-async', 'skeleton-core'
