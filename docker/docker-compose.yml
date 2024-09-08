@@ -53,6 +53,7 @@ services:
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
+      SCHEMA_REGISTRY_COMPATIBILITY_LEVEL: FORWARD
 
   control-center:
     image: confluentinc/cp-enterprise-control-center:5.4.0

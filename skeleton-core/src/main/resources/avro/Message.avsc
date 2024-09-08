@@ -14,6 +14,10 @@
     {
       "name": "status",
       "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string"
     }
   ]
 }

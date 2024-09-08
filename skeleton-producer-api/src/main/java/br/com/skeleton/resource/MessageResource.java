@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/message")
@@ -19,8 +21,9 @@ public class MessageResource {
     @PostMapping
     public ResponseEntity<Message> sendMessage(@RequestBody Message message) {
 
+        message.setId(UUID.randomUUID().toString());
+
         kafkaAvroProducer.send(message.toAvro());
-        message.setStatus(Message.Status.SEND);
 
         return ResponseEntity.ok(message);
     }

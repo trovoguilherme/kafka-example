@@ -5,20 +5,26 @@ server:
 spring:
   application:
     name: kafka-consumer-async
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: skeleton-group-id
-      key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
-      value-deserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
-      auto-offset-reset: "earliest"
-      properties:
-        schema:
-          registry:
-            url: http://localhost:8081
-        specific:
-          avro:
-            reader: true
+
+  cloud:
+    stream:
+      default:
+        consumer:
+          useNativeDecoding: true
+
+      bindings:
+        messageConsumer-in-0:
+          destination: skeleton-send-message
+          group: my-group
+          content-type: application/*+avro
+
+      kafka:
+        binder:
+          consumer-properties:
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+            schema.registry.url: http://localhost:8081
+            specific.avro.reader: true
 
 topic:
   name: skeleton-send-message

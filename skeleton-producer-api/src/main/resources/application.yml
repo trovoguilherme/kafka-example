@@ -5,27 +5,26 @@ server:
 spring:
   application:
     name: kafka-producer-api
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
-      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
-      properties:
-        schema:
-          registry:
-            url: http://localhost:8081
-#    consumer:
-#      group-id: skeleton-group-id
-#      key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
-#      value-deserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
-#      auto-offset-reset: "earliest"
-#      properties:
-#        schema:
-#          registry:
-#            url: http://localhost:8081
-#        specific:
-#          avro:
-#            reader: true
+
+  cloud:
+    stream:
+      default:
+        producer:
+          useNativeEncoding: true
+
+      bindings:
+        output-out-0:
+          destination: skeleton-send-message
+          content-type: application/*+avro
+
+      kafka:
+        binder:
+          configuration:
+            auto.register.schemas: true
+          producer-properties:
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+            value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+            schema.registry.url: http://localhost:8081
 
 topic:
   name: skeleton-send-message

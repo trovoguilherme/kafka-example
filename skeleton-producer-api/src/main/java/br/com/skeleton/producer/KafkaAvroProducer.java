@@ -2,32 +2,26 @@ package br.com.skeleton.producer;
 
 import br.com.skeleton.avro.Message;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.CompletableFuture;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class KafkaAvroProducer {
 
-    @Value("${topic.name}")
-    private String topicName;
-
-    private final KafkaTemplate<String, Message> template;
+    private final StreamBridge streamBridge;
 
     public void send(Message message) {
-        CompletableFuture<SendResult<String, Message>> future = template.send(topicName, message);
 
-        future.whenComplete((result, ex) -> {
-            if (ex == null) {
-                System.out.println("Sent message" + result.getRecordMetadata().offset());
-            } else {
-                System.out.println("Not sent message" + ex.getMessage());
-            }
-        });
+        log.info("Sending message id={}", message.getId());
+
+        boolean send = streamBridge.send("output-out-0", message);
+
+        if (!send) {
+            throw new RuntimeException("Message not send");
+        }
     }
 
 }
