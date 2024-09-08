@@ -1,32 +1,3 @@
 
-server:
-  port: 8080
 
-spring:
-  application:
-    name: kafka-producer-api
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
-      value-serializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
-      properties:
-        schema:
-          registry:
-            url: http://localhost:8081
-#    consumer:
-#      group-id: skeleton-group-id
-#      key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
-#      value-deserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
-#      auto-offset-reset: "earliest"
-#      properties:
-#        schema:
-#          registry:
-#            url: http://localhost:8081
-#        specific:
-#          avro:
-#            reader: true
-
-topic:
-  name: skeleton-send-message
 
