@@ -19,6 +19,7 @@ spring:
 
       kafka:
         binder:
+          autoCreateTopics: true
           configuration:
             auto.register.schemas: true
           producer-properties:
