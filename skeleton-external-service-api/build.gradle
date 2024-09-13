@@ -1,0 +1,17 @@
+
+plugins {
+    id 'org.springframework.boot' version '3.3.3'
+}
+
+dependencies {
+    implementation project(':skeleton-core')
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+}
+
+springBoot {
+    mainClass = 'br.com.skeleton.ExternalServiceApi'
+}
+
+bootJar.enabled = true

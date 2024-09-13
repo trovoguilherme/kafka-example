@@ -1,3 +1,6 @@
 rootProject.name = 'skeleton-producer-consumer'
 
-include 'skeleton-producer-api', 'skeleton-consumer-async', 'skeleton-core'
+include 'skeleton-producer-api',
+        'skeleton-consumer-async',
+        'skeleton-core',
+        'skeleton-external-service-api'
