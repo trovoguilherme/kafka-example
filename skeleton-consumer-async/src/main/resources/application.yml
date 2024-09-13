@@ -14,6 +14,11 @@ spring:
 
       bindings:
         messageConsumer-in-0:
+          consumer:
+            maxAttempts: 5 # Quantidade de retentativas para consumir mensagens
+            backOffInitialInterval: 1000 # O intervalo inicial entre as tentativas será de 1 segundo
+            backOffMultiplier: 2 # O intervalo entre tentativas aumentará exponencialmente com um multiplicador de 2
+            backOffMaxInterval: 10000 # O intervalo máximo entre tentativas será de 10 segundos
           destination: skeleton-send-message
           group: my-group
           content-type: application/*+avro
