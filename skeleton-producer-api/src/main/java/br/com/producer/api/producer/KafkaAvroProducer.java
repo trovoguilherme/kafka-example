@@ -1,4 +1,4 @@
-package br.com.skeleton.producer;
+package br.com.producer.api.producer;
 
 import br.com.skeleton.avro.Message;
 import lombok.RequiredArgsConstructor;

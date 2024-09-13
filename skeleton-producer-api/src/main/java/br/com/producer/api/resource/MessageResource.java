@@ -1,7 +1,7 @@
-package br.com.skeleton.resource;
+package br.com.producer.api.resource;
 
+import br.com.producer.api.producer.KafkaAvroProducer;
 import br.com.skeleton.core.entity.Message;
-import br.com.skeleton.producer.KafkaAvroProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

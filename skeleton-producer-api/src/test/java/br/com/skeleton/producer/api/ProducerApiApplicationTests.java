@@ -1,4 +1,4 @@
-package br.com.skeleton.kafka_producer_consumer_example;
+package br.com.skeleton.producer.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
