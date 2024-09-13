@@ -5,6 +5,8 @@ plugins {
 
 dependencies {
     implementation project(':skeleton-core')
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 }
 
 springBoot {
