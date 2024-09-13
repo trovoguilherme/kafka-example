@@ -1,4 +1,4 @@
-package br.com.skeleton;
+package br.com.skeleton.consumer.async;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

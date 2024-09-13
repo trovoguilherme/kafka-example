@@ -1,7 +1,7 @@
-package br.com.skeleton.consumer;
+package br.com.skeleton.consumer.async.stream;
 
 import br.com.skeleton.avro.Message;
-import br.com.skeleton.service.MessageService;
+import br.com.skeleton.consumer.async.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;

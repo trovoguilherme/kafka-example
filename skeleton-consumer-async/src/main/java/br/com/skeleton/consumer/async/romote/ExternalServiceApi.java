@@ -1,4 +1,4 @@
-package br.com.skeleton.romote;
+package br.com.skeleton.consumer.async.romote;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
