@@ -26,5 +26,9 @@ spring:
             schema.registry.url: http://localhost:8081
             specific.avro.reader: true
 
+remote:
+  external-service-api:
+    url: http://localhost:8091
+
 topic:
   name: skeleton-send-message
