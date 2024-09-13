@@ -10,5 +10,5 @@ dependencies {
 }
 
 springBoot {
-    mainClass = 'br.com.skeleton.ConsumerAsyncApplication'
+    mainClass = 'br.com.skeleton.consumer.async.ConsumerAsyncApplication'
 }
